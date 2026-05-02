@@ -1,2 +1,3 @@
 # The-CSharp-Players-Guide---Robert-s-run
-Personal Coding Tutorial of Robert Haake
+
+My accomplished Levels of R.B. Whitakers Book "The C# Player's Guide"
