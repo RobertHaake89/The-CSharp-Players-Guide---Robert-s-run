@@ -9,14 +9,17 @@ class Program
         Console.WriteLine("\t\t\tARMORED\n\n");
 
         var puppet = new Puppet();
-        var armor = new Armor();
+        var armor = new Armor(Armor.ArmorType.Leather);
         puppet.Armor = armor;
         
-        int grossDamage = 5;
-        int netDamage;
-        puppet.Armor.ReduceDamage(grossDamage, out netDamage);
-        puppet.InputDamage(netDamage);
+        for (int i = 0; i < 10; i++)
+        {
+            int grossDamage = 5;
+            int netDamage;
+            puppet.Armor.ReduceDamage(grossDamage, out netDamage);
+            puppet.InputDamage(netDamage);
 
-        Console.WriteLine($"You dealt {netDamage} damage! Puppet has {puppet.HP} HP left and {puppet.Armor.Durability} Armor!");
+            Console.WriteLine($"You dealt {netDamage} damage! Puppet has {puppet.HP} HP left and {puppet.Armor.Condition} Armor!");
+        }
     }
 }
