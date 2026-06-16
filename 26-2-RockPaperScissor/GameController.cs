@@ -8,10 +8,11 @@ internal class GameController
     {
         while (true)
         {
-            Player.GetMove(player1.Actor);
-            Player.GetMove(player2.Actor);
+            player1.Move = Methods.GetMove(player1.Actor);
+            player2.Move = Methods.GetMove(player2.Actor);
             
             Methods.ShakingFist();
+
         }
     }
 }

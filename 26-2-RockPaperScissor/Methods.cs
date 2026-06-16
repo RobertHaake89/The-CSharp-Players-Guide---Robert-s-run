@@ -1,23 +1,31 @@
 using System;
+using System.ComponentModel;
+using Microsoft.VisualBasic;
 
 namespace RockPaperScissor;
 
 internal class Methods
 {
-    internal static void ShakingFist()
+    internal static int GetMove(Actor actor)
     {
-        int shakingSpeed = 150; // 200 default
-
-        for (int i = 0; i < 6; ++i)
+        if (actor == Actor.Human)
         {
-            if (i % 2 == 0) Console.WriteLine("\n"); // Modulo-Controlled Line for Shaking Effect
-            
-            //Display.Hand.Dual.FistShake();
-            Display.Hand.Left.Fist();
-            Display.Hand.Right.Fist();
+            Console.Write("Your Turn!\nRock (1), Paper (2), Scissor (3): ");
+            return Convert.ToInt32(Console.ReadLine());
+        }
+        else if (actor == Actor.AI)
+        {
+            return Random.Shared.Next(1, 4);
+        }
+        else return 0;
+    }
 
-            Thread.Sleep(shakingSpeed);
-            Console.Clear();
+
+    internal static int MatchingMoves(Player move, Player wins)
+    {
+        if (player1.move == player2.move)
+        {
+            return Player.wins = Player.wins + 0;
         }
     }
 }

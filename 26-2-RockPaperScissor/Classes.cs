@@ -27,23 +27,5 @@ internal class Player
         Move = move;
         Wins = wins;
     }
-
-    internal static int GetMove(Actor actor)
-    {
-        int inputMove;
-
-        if (actor  == Actor.Human)
-        {
-            Console.Write("Your Turn!\nRock (1), Paper (2), Scissor (3): ");
-            inputMove = Convert.ToInt32(Console.ReadLine());
-            return inputMove;
-        }
-        else if (actor == Actor.AI)
-        {
-            inputMove = Random.Shared.Next(1, 4);
-            return inputMove;
-        }
-        else return inputMove = 0;
-    }
 }
 
