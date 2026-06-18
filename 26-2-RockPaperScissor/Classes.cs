@@ -18,10 +18,10 @@ enum Move
 internal class Player
 {
     internal Actor Actor {get; init;}
-    internal int Move {get; set;}
+    internal Move Move {get; set;}
     internal int Wins {get; set;}
 
-    internal Player(Actor actor, int move, int wins)
+    internal Player(Actor actor, Move move, int wins)
     {
         Actor = actor;
         Move = move;

@@ -12,7 +12,23 @@ internal class Display
     {
         internal class Dual
         {
-            internal static void FistShake()
+            internal static void ShakingFists()
+            {
+                int shakingSpeed = 100; // 100 default
+
+                for (int i = 0; i < 6; i++)
+                {
+                    Console.Clear();
+                    
+                    if (i % 2 == 0) Console.WriteLine("\n"); // Modulo-Controlled Line for Shaking Effect
+                    
+                    OpposingFists();
+
+                    Thread.Sleep(shakingSpeed);
+                }
+                Console.Clear();
+            }
+            internal static void OpposingFists()
             {
                 Console.WriteLine("""
 
@@ -126,6 +142,8 @@ internal class Display
             internal static void Scissor()
             {
                 Console.WriteLine("""
+
+                
                                          ,---_  
                                         |      `-_
                                          `-_   /   `-_           ____________
