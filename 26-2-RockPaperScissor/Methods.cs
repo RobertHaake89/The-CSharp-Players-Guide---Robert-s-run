@@ -68,11 +68,11 @@ internal class Methods
 
         if (isTrump)
         {
-            return player1.Wins++;
+            return ++player1.Wins;
         }
         else
         {
-            return player2.Wins++;
+            return ++player2.Wins;
         }
     }
 }

@@ -9,14 +9,14 @@ internal class GameController
         var player1 = new Player(Actor.Human, 0, 0);
         var player2 = new Player(Actor.AI, 0, 0);
 
-        Console.Write("\nHow many Rounds: ");
-        int roundMax = Convert.ToInt32(Console.ReadLine());
+        Console.Write("\nHow many Wins: ");
+        int maxWinnings = Convert.ToInt32(Console.ReadLine());
 
         Console.Clear();
         
         int gameRound = 0;
 
-        while (player1.Wins < roundMax && player2.Wins < roundMax)
+        while (player1.Wins < maxWinnings && player2.Wins < maxWinnings)
         {
             gameRound++;
 
@@ -36,7 +36,7 @@ internal class GameController
 
         string winner;
 
-        if (player1.Wins == 10)
+        if (player1.Wins == maxWinnings)
         {
             winner = Convert.ToString(player1.Actor);
         }
