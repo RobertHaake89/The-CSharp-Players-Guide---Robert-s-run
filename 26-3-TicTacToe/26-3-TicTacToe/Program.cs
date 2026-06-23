@@ -8,11 +8,11 @@ class Program
     {
         Console.WriteLine("\n\n\t\tROBERT'S TIC TAC TOE\n\n");
 
-        Board tictactoe = new Board();
+        Board board = new Board();
 
-        Player human = new Player(Actor.Human);
-        Player ai = new Player(Actor.AI);
+        Player player1 = new Player(Actor.Human, SqCondition.O);
+        Player player2 = new Player(Actor.AI, SqCondition.X);
 
-        GameController.MainLoop();
+        GameController.MainLoop(player1, player2, board);
     }
 }
