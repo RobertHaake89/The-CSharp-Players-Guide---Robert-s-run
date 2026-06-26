@@ -1,62 +1,65 @@
 using System;
+using System.Collections.Generic;
 
 namespace PackingInventory;
 
-internal class Item
+public abstract class Item
 {
-    private float _weight {get; set;}
-    private float _volume {get; set;}
+    public string Name {get;}
+    public float Weight {get;}
+    public float Volume {get;}
 
-    public Item(float weight, float volume)
+    public Item(string name, float weight, float volume)
     {
-        _weight = weight;
-        _volume = volume;
+        Name = name;
+        Weight = weight;
+        Volume = volume;
     }
 }
 
-internal class Arrow : Item
+class Sword : Item
 {
-    public Arrow() : base(0.1f, 0.05f)
-    {
-        
-    }
-}
-
-internal class Bow : Item
-{
-    public Bow() : base(1f, 4f)
+    public Sword() : base("Sword", 5f, 3f)
     {
         
     }
 }
 
-internal class Rope : Item
+class Bow : Item
 {
-    public Rope() : base(1f, 1.5f)
+    public Bow() : base("Bow", 1f ,4f)
     {
         
     }
 }
 
-internal class Water : Item
+class Arrow : Item
 {
-    public Water() : base(2f, 3f)
+    public Arrow() : base("Arrow", 0.1f, 0.05f)
     {
         
     }
 }
 
-internal class FoodRation : Item
+class Rope : Item
 {
-    public FoodRation() : base(1f, 0.5f)
+    public Rope() : base("Rope", 1f, 1.5f)
     {
         
     }
 }
 
-internal class Sword : Item
+class Water : Item
 {
-    public Sword() : base(5f, 3f)
+    public Water() : base("Water", 2f, 3f)
+    {
+        
+    }
+}
+
+class FoodRation : Item
+{
+    public FoodRation() : base("FoodRation", 1f, 0.5f)
     {
         
     }
