@@ -59,7 +59,7 @@ class Water : Item
 
 class FoodRation : Item
 {
-    public FoodRation() : base("FoodRation", 1f, 0.5f)
+    public FoodRation() : base("Food Ration", 1f, 0.5f)
     {
         
     }

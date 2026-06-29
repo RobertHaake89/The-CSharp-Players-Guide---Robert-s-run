@@ -53,8 +53,8 @@ public class Pack
         Item[] equipment = new Item[10];
 
         Item sword = new Sword();
-        Item bow = new Arrow();
-        Item arrow = new Bow();
+        Item bow = new Bow();
+        Item arrow = new Arrow();
         Item rope = new Rope();
         Item water = new Water();
         Item foodRation = new FoodRation();
@@ -93,13 +93,39 @@ public class Pack
         }
         else 
         {
-            Console.WriteLine("\nWarning: Your Pack is too Full!");
+            Console.WriteLine("\nWarning: Your Pack is already Full!");
             Thread.Sleep(2000);
         }
     }
 
-    public void Remove()
+    public void Remove() // UNSTABLE!
     {
-        
+        Console.Clear();
+
+        Console.WriteLine(string.Join($", ", _storage.Select(item => item.Name)));
+
+        Console.Write("What Item you want to remove (11 = return)? ");
+
+        int choice = Convert.ToInt32(Console.ReadLine());
+        if (choice == 11) return;
+
+        bool isEmpty = 
+        _currentItemCount == 0 ||
+        _currentWeight == 0 ||
+        _currentVolume == 0 ?
+        true : false;
+
+        if (!isEmpty)
+        {
+            _storage.Remove(_storage[choice]);
+            _currentItemCount--;
+            _currentWeight -= _storage[choice].Weight;
+            _currentVolume -= _storage[choice].Volume;
+        }
+        else 
+        {
+            Console.WriteLine("\nYour Pack is already Empty!");
+            Thread.Sleep(2000);
+        }
     }
 }
