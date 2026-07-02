@@ -4,7 +4,7 @@ namespace TheOldRobot;
 
 public class Methods
 {
-    public static RobotCommand GetCommand(int input)
+    public static IRobotCommand GetCommand(int input)
     {
         switch (input)
         {
