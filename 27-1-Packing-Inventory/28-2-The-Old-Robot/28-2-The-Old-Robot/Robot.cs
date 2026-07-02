@@ -9,7 +9,7 @@ public class Robot
     public int X {get; set;} = 0;
     public int Y {get; set;} = 0;
     public bool IsPowered {get; set;} = false;
-    public RobotCommand?[] Commands {get;} = new RobotCommand?[3];
+    public RobotCommand?[] Commands {get; } = new RobotCommand?[3];
 
     public void Run()
     {
@@ -24,11 +24,6 @@ public class Robot
 public abstract class RobotCommand
 {
     public virtual void Run(Robot robot)
-    {
-        
-    }
-
-    public virtual void Move(Robot robot)
     {
         
     }
@@ -54,7 +49,7 @@ public class OffCommand : RobotCommand
 
 public class NorthCommand : RobotCommand
 {
-    public override void Move(Robot robot)
+    public override void Run(Robot robot)
     {
         if (!robot.IsPowered)
         {
@@ -67,7 +62,7 @@ public class NorthCommand : RobotCommand
 }
 public class EastCommand : RobotCommand
 {
-    public override void Move(Robot robot)
+    public override void Run(Robot robot)
     {
         if (!robot.IsPowered)
         {
@@ -80,7 +75,7 @@ public class EastCommand : RobotCommand
 }
 public class SouthCommand : RobotCommand
 {
-    public override void Move(Robot robot)
+    public override void Run(Robot robot)
     {
         if (!robot.IsPowered)
         {
@@ -93,7 +88,7 @@ public class SouthCommand : RobotCommand
 }
 public class WestCommand : RobotCommand
 {
-    public override void Move(Robot robot)
+    public override void Run(Robot robot)
     {
         if (!robot.IsPowered)
         {
