@@ -1,5 +1,5 @@
 ﻿using System;
-using System.IO.Pipelines;
+using System.Globalization;
 
 namespace TrypasGem;
 
@@ -7,10 +7,15 @@ class Program
 {
     public static void Main()
     {
-        while (true)
+        CultureInfo.CurrentCulture = new CultureInfo("en-US"); // international "."-usage for double, not ","
+        CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+
+        bool isRunning = true;
+
+        while (isRunning)
         {
             Console.Clear();
-            Console.WriteLine("\n\tTRYPAS GEM\n\n");
+            Console.WriteLine("\n\tTRYPAS GEM\n");
 
             Console.Write("\nPlease enter your Input: ");
             string? inputString = Console.ReadLine();
@@ -18,9 +23,12 @@ class Program
             Console.WriteLine("""
 
             What do you want to check it for?
+            
             1 - int
             2 - double
             3 - bool
+
+            9 - exit
 
             """);
 
@@ -36,6 +44,9 @@ class Program
                     break;
                 case 3:
                     Method.CheckBool(inputString!);
+                    break;
+                case 9:
+                    isRunning = false;
                     break;
                 default:
                     Console.WriteLine("Bad Input");

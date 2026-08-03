@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+using System.Linq;
 
 namespace TrypasGem;
 
@@ -44,14 +46,19 @@ class Method
     {
         bool successful = false;
 
+        bool inputString 
+            = input.All(char.IsLetter) 
+                ? true 
+                : false;
+
         while (!successful)
         {
-            if (bool.TryParse(input, out bool result))
+            if (bool.TryParse(Convert.ToString(inputString), out bool result))
             {
                 successful = true;
             }
 
-            Console.WriteLine($"\nSuccess? {successful} Value={result}");
+            Console.WriteLine($"\nSuccess? {inputString} Value={result}");
 
             Console.Write("\nPress any Button to continue ");
             Console.ReadKey();
