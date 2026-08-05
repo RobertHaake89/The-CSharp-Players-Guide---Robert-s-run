@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.IO.Pipelines;
-using System.Runtime.CompilerServices;
 
 namespace BetterRandom;
 
@@ -23,6 +20,13 @@ public static class ExtensionFormatting
 
 public static class ExtensionMethod
 {
+    enum HeadChance
+        {
+            Zero = 0,
+            TwentyFive = 25,
+            Fifty = 50,
+            SeventyFive = 75,
+        }
     public static double RandomDouble(this double input) => Random.Shared.NextDouble() * 10;
     
     public static string RandomDirection(this string direction)
@@ -41,14 +45,21 @@ public static class ExtensionMethod
         return direction;
     }
 
-    public static string TossCoin(this bool coin)
+    public static string TossCoin(this bool isHead)
     {
-        int coinSide = Random.Shared.Next(1,3);
+        double randomizer = Random.Shared.Next(1,11);
+        double headFactor;
 
-        if (coinSide == 1) coin = true;
-        else coin = false;
+        if (randomizer % 3 == 0) headFactor = (double)HeadChance.TwentyFive / 100;
+        else if (randomizer % 2 == 0) headFactor = (double)HeadChance.Fifty / 100;
+        else if (randomizer % 5 == 0) headFactor = (double)HeadChance.SeventyFive / 100;
+        else headFactor = (double)HeadChance.Zero / 100;
 
-        string result = coin ? "head" : "tail";
+
+        Console.WriteLine(headFactor);
+        isHead = Math.Round(headFactor) == 1;
+
+        string result = isHead ? "head" : "tail";
 
         return result;
     }

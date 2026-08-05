@@ -11,10 +11,10 @@ class Program
 
         double targetDouble = 0;
         string? direction = null;
-        bool coin = true;
+        bool isHead = true;
 
         Console.WriteLine(targetDouble.RandomDouble().TrimDouble());
         Console.WriteLine(direction!.RandomDirection().ToTitleCase());
-        Console.WriteLine(coin.TossCoin().ToTitleCase());
+        Console.WriteLine(isHead.TossCoin().ToTitleCase());
     }
 }
