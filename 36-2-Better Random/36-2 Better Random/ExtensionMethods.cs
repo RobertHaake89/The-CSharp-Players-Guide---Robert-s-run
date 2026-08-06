@@ -47,17 +47,18 @@ public static class ExtensionMethod
 
     public static string TossCoin(this bool isHead)
     {
-        double randomizer = Random.Shared.Next(1,11);
+        double randomizer = Random.Shared.Next(1,13);
+        double fairMidOdds = Random.Shared.Next(90, 111);
+
         double headFactor;
 
-        if (randomizer % 3 == 0) headFactor = (double)HeadChance.TwentyFive / 100;
+        if (randomizer % 3 == 0 && randomizer < 10) headFactor = (double)HeadChance.TwentyFive / 100;
         else if (randomizer % 2 == 0) headFactor = (double)HeadChance.Fifty / 100;
-        else if (randomizer % 5 == 0) headFactor = (double)HeadChance.SeventyFive / 100;
-        else headFactor = (double)HeadChance.Zero / 100;
+        else if (randomizer % 4 == 0) headFactor = (double)HeadChance.SeventyFive / 100;
+        else headFactor = (double)HeadChance.Fifty / fairMidOdds;
 
-
-        Console.WriteLine(headFactor);
-        isHead = Math.Round(headFactor) == 1;
+        //Console.WriteLine(headFactor); // Debug
+        isHead = headFactor >= 0.5;
 
         string result = isHead ? "head" : "tail";
 
