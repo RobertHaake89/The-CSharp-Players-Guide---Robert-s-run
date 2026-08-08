@@ -8,6 +8,6 @@ class Program
     {
         Console.WriteLine("\n\tEXCEPTI'S GAME\n\n");
 
-        
+        Game.MainLoop();
     }
 }
