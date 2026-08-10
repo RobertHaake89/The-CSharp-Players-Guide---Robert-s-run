@@ -7,7 +7,7 @@ class Player(string name)
     public string? Name {get; init;}
     private int[] _chosenNumbers {get; set;} = new int[10];
 
-    public void AddNumber(int input)
+    /*public void AddNumber(int input)
     {
         int i = 0;
 
@@ -20,20 +20,5 @@ class Player(string name)
             }
             else i++;
         }
-    }
-
-    public void GetNumber()
-    {
-        int i = 0;
-
-        for (; i <= _chosenNumbers.GetLength(0); i++)
-        {
-            if (_chosenNumbers[i] != 0)
-            {
-                Console.Write($"{_chosenNumbers[i]}, ");
-                i++;
-            }
-            else i++;
-        }
-    }
+    }*/
 }

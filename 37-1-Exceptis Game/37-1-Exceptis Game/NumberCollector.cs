@@ -1,13 +1,13 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace ExceptisGame;
 
 class NumberCollector
 {
     private int[]? _collection {get; set;} = new int[10];
+    private readonly int _sectretNumber = Random.Shared.Next(1,10);
 
-    public void AddNumber(int input)
+    public void AddNumber(Player player, int input)
     {
         int i = 0;
 
@@ -18,9 +18,22 @@ class NumberCollector
             Console.WriteLine("This number has already been chosen!");
             break;
             }
-
             else if (this._collection[i] != 0)
             this._collection[i] += input;
+        }
+    }
+
+    public void CheckForSecretNumber(int input)
+    {
+        int i = 0;
+
+        for (; i < this._collection!.GetLength(0); i++)
+        {
+            if (this._collection.Contains(_sectretNumber))
+            {
+            Console.WriteLine("This number has already been chosen!");
+            break;
+            }
         }
     }
 }

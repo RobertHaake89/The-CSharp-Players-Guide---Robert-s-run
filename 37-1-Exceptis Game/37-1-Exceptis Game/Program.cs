@@ -8,6 +8,10 @@ class Program
     {
         Console.WriteLine("\n\tEXCEPTI'S GAME\n\n");
 
-        Game.MainLoop();
+        var player1 = new Player("Player 1");
+        var player2 = new Player("Player2");
+        var collector1 = new NumberCollector();
+
+        Game.MainLoop(player1, player2, collector1);
     }
 }
