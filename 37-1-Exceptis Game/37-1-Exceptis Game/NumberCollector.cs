@@ -7,33 +7,48 @@ class NumberCollector
     private int[]? _collection {get; set;} = new int[10];
     private readonly int _sectretNumber = Random.Shared.Next(1,10);
 
-    public void AddNumber(Player player, int input)
+    public int[] GetContent()
+    {
+        return _collection!;
+    }
+
+    public int GetSecretNumber()
+    {
+        return _sectretNumber;
+    }
+
+    public void AddNumber(int input)
     {
         int i = 0;
 
-        for (; i < this._collection!.GetLength(0); i++)
+        for (; i < _collection!.GetLength(0); i++)
         {
-            if (this._collection.Contains(input))
+            if (_collection[i] == input)
             {
-            Console.WriteLine("This number has already been chosen!");
+            Console.WriteLine("\nThis number has already been chosen!");
             break;
             }
-            else if (this._collection[i] != 0)
-            this._collection[i] += input;
+            else if (_collection[i] == 0)
+            {
+                _collection[i] = input;
+                break;
+            }
+            
         }
     }
 
-    public void CheckForSecretNumber(int input)
+    public bool MatchWithSecretNumber(int chosenNumber)
     {
         int i = 0;
 
-        for (; i < this._collection!.GetLength(0); i++)
+        for (; i < _collection!.GetLength(0); i++)
         {
-            if (this._collection.Contains(_sectretNumber))
+            if (_sectretNumber == chosenNumber)
             {
-            Console.WriteLine("This number has already been chosen!");
-            break;
+            Console.WriteLine("BINGO!");
+            return true;
             }
         }
+        return false;
     }
 }

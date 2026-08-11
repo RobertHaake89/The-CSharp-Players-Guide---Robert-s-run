@@ -1,5 +1,4 @@
 using System;
-using Microsoft.VisualBasic;
 
 namespace ExceptisGame;
 
@@ -8,26 +7,21 @@ class Game
     public static void MainLoop(Player player1, Player player2, NumberCollector numCollector)
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        int input;
 
         bool isRunning = true;
         while (isRunning)
         {
             Console.Clear();
+            Display.Header(numCollector);
 
-            Console.WriteLine("\n\t\tEXCEPTIS GAME\n\n");
+            player1.GuessNumber(numCollector);
+            if (player1.CheckForWinning()) break;
 
-            
-
-            Console.Write($"{player1.Name} please guess a Number: ");
-            input = int.Parse(Console.ReadLine());
-            numCollector.AddNumber(player1, input);
-
-            Console.Write($"{player2.Name} please guess a Number: ");
-            input = int.Parse(Console.ReadLine());
-            numCollector.AddNumber(player2, input);
-
-
+            player2.GuessNumber(numCollector);
+            if (player2.CheckForWinning()) break;
         }
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.WriteLine("\n\tGAME OVER!\n");
+        Console.ResetColor();
     }
 }
