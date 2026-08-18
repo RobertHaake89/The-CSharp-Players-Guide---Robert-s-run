@@ -2,13 +2,24 @@ using System;
 
 namespace CharberryTrees;
 
-class CharberryTree
+public class CharberryTree
 {
     private Random _random = new Random();
-    public bool Ripe {get; set;}
+    public bool IsRipe {get; set;}
+    public event EventHandler? Ripened;
 
+
+    
     public void MaybeGrow()
     {
-        if (_random.NextDouble() < 0.00000001 && !Ripe) Ripe = true;
+        if (_random.NextDouble() < 0.0001
+        && !IsRipe)
+        {
+            IsRipe = true;
+            Ripened?.Invoke(this, EventArgs.Empty);
+        }
+
     }
+
+    
 }
