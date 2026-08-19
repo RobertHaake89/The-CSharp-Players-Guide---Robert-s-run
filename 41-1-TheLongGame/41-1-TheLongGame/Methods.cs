@@ -4,9 +4,10 @@ class Methods
 {
     public static void CheckScore(string name, out int score)
     {
-        string[] lines = File.Exists("score.txt")
-            ? File.ReadAllLines("score.txt")
-            : [];
+        string[] lines
+            = File.Exists("score.txt")
+                ? File.ReadAllLines("score.txt")
+                : [];
 
             score = 0;
 
