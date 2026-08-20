@@ -12,6 +12,7 @@ class Game
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Clear();
+            Display.MainScreen(player);
 
             Console.Write("Chose an ingredient: ");
             int numIngredient = int.Parse(Console.ReadLine());
@@ -25,6 +26,7 @@ class Game
 
             Console.WriteLine($"{player.Name} has created a {player.Potion.Name} Potion!");
 
+            //Display.MainScreen(player);
             Console.ReadKey();
             
 

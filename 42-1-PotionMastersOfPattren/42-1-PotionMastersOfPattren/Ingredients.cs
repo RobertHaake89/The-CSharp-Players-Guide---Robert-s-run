@@ -12,8 +12,9 @@ public enum IngredientType
     EyeshineGem
 }
 
-class Ingredient(string name, IngredientType type)
+class Ingredient(IngredientType type)
 {
-    public string? Name {get; set;} = name;
+    public string? Name {get; set;} = type.ToString();
     public IngredientType Type {get; set;} = type;
+    
 }

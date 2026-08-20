@@ -11,10 +11,12 @@ class Program
 
         var player = new Player("Player");
         var potion = new Potion(PotionType.Water);
+        var ingredient = new Ingredient(IngredientType.None);
 
         var alchemistTable = new AlchemistTable();
 
         player.Potion = potion;
+        player.Ingredient = ingredient;
 
         Game.MainLoop(player, alchemistTable);
     }

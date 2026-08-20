@@ -35,9 +35,9 @@ class Player
         string name = result.ToString();
         //Console.WriteLine(name);
 
-        var ingredient = new Ingredient(name, result);
+        var ingredient = new Ingredient(result);
 
-        Console.WriteLine($"IngName:{ingredient.Name}     IngType:{ingredient.Type}");
+        //Console.WriteLine($"IngName:{ingredient.Name}     IngType:{ingredient.Type}");
         //Console.ReadKey();
 
         Ingredient = ingredient;
