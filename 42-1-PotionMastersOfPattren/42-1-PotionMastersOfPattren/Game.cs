@@ -7,8 +7,6 @@ class Game
 {
     public static void MainLoop(ref Player player, ref AlchemistTable alchemistTable)
     {
-
-
         while (true)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -34,12 +32,8 @@ class Game
 
             player.DiscardRuinedPotion();
 
-            Console.ReadKey();
-
+            //Console.ReadKey();
             Thread.Sleep(4000);
-            
-
-
         }
     }
 }
