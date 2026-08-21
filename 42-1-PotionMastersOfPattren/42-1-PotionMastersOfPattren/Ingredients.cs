@@ -4,8 +4,8 @@ namespace PotionMastersOfPattren;
 
 public enum IngredientType
 {
-    None,
-    Stardust = 1,
+    None = 0,
+    Stardust,
     Venom,
     DragonBreath,
     ShadowGlass,

@@ -18,6 +18,6 @@ class Program
         player.Potion = potion;
         player.Ingredient = ingredient;
 
-        Game.MainLoop(player, alchemistTable);
+        Game.MainLoop(ref player, ref alchemistTable);
     }
 }

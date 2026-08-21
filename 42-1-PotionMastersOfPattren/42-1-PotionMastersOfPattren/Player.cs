@@ -30,15 +30,8 @@ class Player
             5 => IngredientType.EyeshineGem,
             _ => IngredientType.None
         };
-        // Console.WriteLine(result);
-
-        string name = result.ToString();
-        //Console.WriteLine(name);
 
         var ingredient = new Ingredient(result);
-
-        //Console.WriteLine($"IngName:{ingredient.Name}     IngType:{ingredient.Type}");
-        //Console.ReadKey();
 
         Ingredient = ingredient;
     }
@@ -49,5 +42,14 @@ class Player
         alchemistTable.SetSlotIngredient(this);
 
         alchemistTable.BrewPotion();
+    }
+
+    public void DiscardRuinedPotion()
+    {
+        if (Potion!.Type is PotionType.Ruined)
+        {
+            Potion = new Potion(PotionType.Water);
+            Console.WriteLine("\nYou discard the ruined Potion.");
+        }
     }
 }

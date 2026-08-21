@@ -1,10 +1,11 @@
 using System;
+using System.Threading;
 
 namespace PotionMastersOfPattren;
 
 class Game
 {
-    public static void MainLoop(Player player, AlchemistTable alchemistTable)
+    public static void MainLoop(ref Player player, ref AlchemistTable alchemistTable)
     {
 
 
@@ -15,19 +16,27 @@ class Game
             Display.MainScreen(player);
 
             Console.Write("Chose an ingredient: ");
-            int numIngredient = int.Parse(Console.ReadLine());
+            int numIngredient = int.Parse(Console.ReadLine()!);
             player.GetIngredient(numIngredient);
 
-            //Console.WriteLine($"Potion: {player.Potion.Name}, Ingredient: {player.Ingredient.Name}");
-            //Console.ReadKey();
+            Console.Clear();
+            Display.MainScreen(player);
 
             player.CreatePotion(alchemistTable);
+
+            Console.Clear();
+            Display.MainScreen(player);
+
             player.TakePotion(alchemistTable);
 
-            Console.WriteLine($"{player.Name} has created a {player.Potion.Name} Potion!");
+            Method.VovelChecker(player, out string addN);
+            Console.WriteLine($"\n\n{player.Name} has created a{addN} {player.Potion.Name} Potion!");
 
-            //Display.MainScreen(player);
+            player.DiscardRuinedPotion();
+
             Console.ReadKey();
+
+            Thread.Sleep(4000);
             
 
 

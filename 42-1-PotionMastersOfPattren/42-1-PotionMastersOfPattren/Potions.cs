@@ -4,7 +4,8 @@ namespace PotionMastersOfPattren;
 
 public enum PotionType
 {
-    Water = 0,
+    Empty = 0,
+    Water,
     Elixir,
     Poison,
     Flying,
@@ -27,5 +28,4 @@ class Potion
     }
 
     public void SetName() => Name = Type.ToString();
-    //public void SetType(PotionType type) => Type = type;
 }
