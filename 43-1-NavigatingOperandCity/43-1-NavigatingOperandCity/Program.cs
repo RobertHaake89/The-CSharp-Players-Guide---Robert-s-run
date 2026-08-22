@@ -9,6 +9,6 @@ class Program
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("\n\n\tNavigating Operand City\n\n");
 
-
+        
     }
 }
