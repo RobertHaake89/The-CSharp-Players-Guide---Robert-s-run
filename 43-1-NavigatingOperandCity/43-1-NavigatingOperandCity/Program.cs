@@ -34,9 +34,14 @@ class Program
             Coord.BlockCoordinate resultCoord = blockCoord + blockOffset;
             Coord.BlockCoordinate resultDirection =  blockCoord + inputDirection;
 
+            var coord1 = new Coord.BlockCoordinate(resultCoord.Row, resultCoord.Column);
+            var coord2 = new Coord.BlockCoordinate(resultDirection.Row, resultDirection.Column);
+            
+            blockCoord.Coordinate[0] = coord1;
+            blockCoord.Coordinate[1] = coord2;
 
-            Console.WriteLine($"\nNew Coord is ({resultCoord.Row}, {resultCoord.Column})");
-            Console.WriteLine($"New Enum-Directed Coord is ({resultDirection.Row}, {resultDirection.Column})");
+            Console.WriteLine($"\nNew Coord is ({blockCoord[0]?.Row}, {blockCoord[0]?.Column})");
+            Console.WriteLine($"New Enum-Directed Coord is ({blockCoord[1]?.Row}, {blockCoord[1]?.Column})");
 
             Console.ReadKey();
         }

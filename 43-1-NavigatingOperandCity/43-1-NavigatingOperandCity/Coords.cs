@@ -21,6 +21,14 @@ class Coord
     {
         public float Row {get; set;} = row;
         public float Column {get; set;} =  column;
+
+        public BlockCoordinate?[] Coordinate = new BlockCoordinate?[9];
+        public BlockCoordinate? this[int index]
+        {
+            get {return Coordinate[index];}
+            set {Coordinate[index] = value;}
+        }
+
         
         public static BlockCoordinate operator +(BlockCoordinate coord, BlockOffset offCoord)
         => new BlockCoordinate(coord.Row + offCoord.RowOff,coord.Column - offCoord.ColumnOffset);
