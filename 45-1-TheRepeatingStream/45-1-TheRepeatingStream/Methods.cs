@@ -8,39 +8,18 @@ public class Methods
 {
     public static int GenerateRandomNumbers()
     {
-        //int i = 0;
         int randomNumber;
 
         while (true)
         {
-            randomNumber = Random.Shared.Next(1,10);
-            Thread.Sleep(10);
+            randomNumber = Random.Shared.Next(1,11);
             return randomNumber;
         }
     }
 
-    public static void ThreadingProcess(int memory, ref List<int> evenNumList, ref List<int> oddNumList)
-    {
-        int number = GenerateRandomNumbers();
-
-                RecentNumbers.AddToMemory(number);
-                RecentNumbers.SetCounter();
-                Console.Write($"{RecentNumbers.GetCounter()} ");
-
-                if (memory % 2 == 0)
-                {
-                    evenNumList.Add(memory);
-                }
-                else if (memory % 2 != 0)
-                {
-                    oddNumList.Add(memory);
-                }
-                else throw new Exception("Error");
-    }
-
     public static void ConcurrencyCheck(in List<int> evenNumList, in List<int> oddNumList)
     {
-        if (RecentNumbers.GetCounter() == RecentNumbers.maxLoops)
+        if (RecentNumbers.GetCounter() >= RecentNumbers.maxLoops)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
 
@@ -50,7 +29,7 @@ public class Methods
             int numberDiviating = Math.Abs(evenNumList.Count - oddNumList.Count);
 
             string resultMessage
-                = evenNumList.Count == oddNumList.Count
+                = evenNumList.Count + oddNumList.Count == RecentNumbers.GetCounter()
                     ? "No Concurrency Errors Detected!"
                     : $"{numberDiviating} Concurrency Errors Detected!";
 
