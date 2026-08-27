@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Threading;
+using static TheRepeatingStream.RecentNumbers;
+using static TheRepeatingStream.Methods;
+
 
 namespace TheRepeatingStream;
 
@@ -7,34 +10,24 @@ class Program
 {
     public static void Main()
     {
-        Console.ForegroundColor = ConsoleColor.Green;
+        /*int[] evenNumber = new int[RecentNumbers.maxLoops];
+        int[] oddNumber = new int[RecentNumbers.maxLoops];*/
+        Console.WriteLine(" ");
 
         while (true)
         {
             //RecentNumbers.AddToMemory(Methods.GenerateRandomNumbers());
-
+            Console.ForegroundColor = ConsoleColor.Green;
             
 
             Thread thread1 = new Thread(() =>
             {
-                int number = Methods.GenerateRandomNumbers();
-
-                RecentNumbers.AddToMemory(number);
-                RecentNumbers.SetCounter();
-                Console.Write($"{RecentNumbers.GetCounter()} ");
-
-                //Console.Write($"Thread1 : {RecentNumbers.GetMemory()}");
+                ThreadingProcess(GetMemory(), ref EvenNumber, ref OddNumber);
             });
 
             Thread thread2 = new Thread(() =>
             {
-                int number = Methods.GenerateRandomNumbers();
-
-                RecentNumbers.AddToMemory(number);
-                RecentNumbers.SetCounter();
-                Console.Write($"{RecentNumbers.GetCounter()} ");
-
-                //Console.WriteLine($"\tThread2 : {RecentNumbers.GetMemory()}");
+                ThreadingProcess(GetMemory(), ref EvenNumber, ref OddNumber);
             });
             
             
@@ -42,6 +35,7 @@ class Program
             thread1.Start();
             thread2.Start();
 
+            //ConcurrencyCheck(GetMemory(),ref EvenNumber, ref OddNumber);
             //Console.Write($"{RecentNumbers.GetMemory()}, ");
 
             thread1.Join();
@@ -49,7 +43,8 @@ class Program
 
             //Console.Write($"{RecentNumbers.GetCounter()} ");
 
-            if (RecentNumbers.GetCounter() >= 100) break;
+            ConcurrencyCheck(in EvenNumber, in OddNumber);
+            if (GetCounter() >= maxLoops) break;
         }
     }
 }
