@@ -6,20 +6,42 @@ namespace TheRepeatingStream;
 
 public class Methods
 {
-    public static int GenerateRandomNumbers()
+    public static void Initilisation()
+    {
+        Console.WriteLine("Press any Button to start Concurrency-Error Check!");
+        Console.ReadKey();
+
+        Console.Clear();
+        Console.Write("\nInitializing");
+
+        int counter = 1;
+
+        for (int i = 1; i <= 3; i++)
+        {
+            Console.Write($"\n{counter++} ");
+
+            for (int j = 1; j <= 3; j++)
+            {
+                Console.Write(" .");
+                Thread.Sleep(600);
+            }
+        }
+
+        Console.WriteLine("\nSTART");
+        Thread.Sleep(1000);
+    }
+
+    public static int GenerateRandomNumber()
     {
         int randomNumber;
 
-        while (true)
-        {
-            randomNumber = Random.Shared.Next(1,11);
-            return randomNumber;
-        }
+        randomNumber = Random.Shared.Next(1,11);
+        return randomNumber;
     }
 
     public static void ConcurrencyCheck(in List<int> evenNumList, in List<int> oddNumList)
     {
-        if (RecentNumbers.GetCounter() >= RecentNumbers.maxLoops)
+        if (RecentNumbers.GetCounter() >= RecentNumbers.MaxLoops)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
 

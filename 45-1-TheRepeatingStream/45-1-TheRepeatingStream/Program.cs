@@ -10,13 +10,13 @@ class Program
 {
     public static void Main()
     {
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.Clear();
-        Console.WriteLine(" ");
+
+        Initilisation();
 
         while (true)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-
             Thread thread1 = new Thread(ThreadingProcess);
             Thread thread2 = new Thread(ThreadingProcess);
             
@@ -27,7 +27,7 @@ class Program
             thread2.Join();
 
             ConcurrencyCheck(GetEvenNumber(), GetOddNumber());
-            if (GetCounter() >= maxLoops) break;
+            if (GetCounter() >= MaxLoops) break;
         }
     }
 }
