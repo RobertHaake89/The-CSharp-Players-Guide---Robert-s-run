@@ -8,7 +8,16 @@ public class Methods
 {
     public static void Initilisation()
     {
-        Console.WriteLine("Press any Button to start Concurrency-Error Check!");
+        Console.WriteLine("\tTHE REPEATING STREAM - Concurrency Test\n\n");
+
+        Console.WriteLine($"A loop with 2 synced Threads will count to {RecentNumbers.MaxLoops}.");
+        Console.WriteLine("The Lock has already been added in Numbers.cs.");
+        Console.WriteLine("You can disassemble the Lock to see the difference.");
+
+        Console.WriteLine("\nEpilepsy Warning: Rapidly changing text.");
+
+        Console.WriteLine("\n\nPress any Button to start!");
+
         Console.ReadKey();
 
         Console.Clear();
