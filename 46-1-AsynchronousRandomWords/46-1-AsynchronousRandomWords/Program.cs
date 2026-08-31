@@ -4,17 +4,26 @@ namespace AsynchronousRandomWords;
 
 class Program
 {
-    public static void Main()
+    public static async Task Main()
     {
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Clear();
 
         Console.Write("\nEnter a random word: ");
-        string? inputWord = Console.ReadLine();
+        string? inputWord = Console.ReadLine()!.ToLower();
 
-        Methods.RandomlyRecreate(inputWord!, out string guessedWord, out int count);
+        float currentProgress = 0;
+        var progress = new Progress<float>(value =>
+        {
+            currentProgress = value;
+        });
 
-        Console.WriteLine($"\n\nThis took {count} attempt!");
-        Console.WriteLine($"The guessed word is: {guessedWord}");
+        using var cts = new CancellationTokenSource();
+        Task loadingTask = Methods.LoadingSpinner(cts.Token,() => currentProgress);
+
+        await Methods.RandomlyRecreate(inputWord, progress);
+
+        cts.Cancel();
+        await loadingTask;
     }
 }
