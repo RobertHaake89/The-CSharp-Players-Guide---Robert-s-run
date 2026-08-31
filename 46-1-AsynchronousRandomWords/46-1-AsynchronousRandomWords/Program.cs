@@ -9,7 +9,7 @@ class Program
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Clear();
 
-        Console.Write("\nEnter a random word: ");
+        Console.Write("\nLet me guess a random word: ");
         string? inputWord = Console.ReadLine()!.ToLower();
 
         float currentProgress = 0;
