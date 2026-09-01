@@ -10,7 +10,7 @@ class Program
         Console.Clear();
 
         Console.Write("\nLet me guess a random word: ");
-        string? inputWord = Console.ReadLine()!.ToLower();
+        string? inputWord = Console.ReadLine()!;
 
         float currentProgress = 0;
         var progress = new Progress<float>(value =>
