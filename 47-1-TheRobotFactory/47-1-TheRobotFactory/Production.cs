@@ -67,8 +67,6 @@ class Production
             Console.WriteLine($"Width: {(robot.Width is not 0 ? $"{robot.Width} cm" : "")}");
             Console.WriteLine($"Color: {robot.Color}");
 
-            
-
             garage.Collection!.Add(robot.ID, robot);
 
             Console.Write("\nDo you want to create another robot (y/n)? ");

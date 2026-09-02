@@ -11,7 +11,6 @@ class Program
         Console.ForegroundColor = ConsoleColor.Green;
 
         var garage = new Garage();
-        
 
         Production.Process(garage);
 
@@ -24,6 +23,5 @@ class Program
 
             Console.WriteLine($"{robot.ID}: {robot.Name}"); 
         }
-        
     }
 }
