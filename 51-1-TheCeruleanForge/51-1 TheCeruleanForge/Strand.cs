@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 
 namespace CeruleanForge;
 
@@ -42,11 +43,11 @@ public class Strand
         char command = Instructions[NextInstruction];
 
         // RUBBLE: WEAVING THE AETHERS
-        if (command == '>') { }
-        if (command == '<') { }
-        if (command == '^') { }
-        if (command == 'v') { }
-        if (command == '*') { /* RUBBLE: SHIELDING */ }
+        if (command == '>') Position = new Position(Position.Row, Position.Column + 1);
+        if (command == '<') Position = new Position(Position.Row, Position.Column - 1);
+        if (command == '^') Position = new Position(Position.Row - 1, Position.Column);
+        if (command == 'v') Position = new Position(Position.Row + 1, Position.Column);
+        if (command == '*') Material.SetData(Position.Row, Position.Column, Color);
         if (command == ' ') { } // Do nothing.
 
         NextInstruction++;

@@ -35,6 +35,7 @@ public class CeruleanForge(Material material, Strand[] strands)
             // still run a bit slow. That will be fixed in one of the                  
             // challenges.)
             Thread.Sleep(10);
+
             renderer.Render();
         }
     }

@@ -12,6 +12,9 @@ public record Position(int Row, int Column)
     public static Position Wrap(Position position, int size)
     {
         // RUBBLE: WRAPPED UP
-        return new Position((position.Row - size) /*% size*/, (position.Column - size) /*% size*/);
+        //Console.WriteLine($"{position.Row} {position.Column}");
+
+        return new Position((position.Row + size) % size, (position.Column + size) % size);
+
     }
 }
