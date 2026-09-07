@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace CeruleanForge;
 
@@ -8,9 +9,9 @@ public class Program
     {
         //File.ReadAllLines("obj/Checkerboard.cs", scoreText);
 
-        string[] scoreText = File.ReadAllLines("obj/Checkerboard.cs"); 
+        string[] scoreText = File.ReadAllLines("Checkerboard.sc");
  
-        List<Strand> input = new(); 
+        List<Strand> strands2 = new List<Strand>(); 
         
         foreach (string text in scoreText) 
         { 
@@ -22,21 +23,21 @@ public class Program
             
             string instructions = parts[8]; 
 
-            input.Add(new Strand(size, instructions, color, position, offset)); 
+            strands2.Add(new Strand(size, instructions, color, position, offset)); 
         }
 
         
 
         Material material = new Material(85);
-        Strand[] strands =
+        /*Strand[] strands =
         [
             new Strand(material, "*^*^*^*<<*<*<*<*vv*v*v*v*>>*>*>*>*>>>>>>>>>^^^^", Colors.Cerulean, new Position(1, 3), new Position(0, 0)),
-            new Strand(material, "*^*^*^*^*^*^*^*<<^^", Colors.Azure/*White*/, new Position(3, 5), new Position(0, 0)),
-            new Strand(material, "*>*v*<*^>>>>>>>>>^^", Colors.White/*Turquoise*/, new Position(0, 0), new Position(0, 0)),
+            new Strand(material, "*^*^*^*^*^*^*^*<<^^", Colors.Azure, new Position(3, 5), new Position(0, 0)),
+            new Strand(material, "*>*v*<*^>>>>>>>>>^^", Colors.White, new Position(0, 0), new Position(0, 0)),
             new Strand(material, "*>*>*>*>*>*>*>*^^>>", Colors.Azure, new Position(3, 7), new Position(0, 0)),
-        ];
+        ];*/
 
-        CeruleanForge forge = new (material, strands);
+        CeruleanForge forge = new (material, strands2);
 
 
         // DEBUG
