@@ -19,6 +19,8 @@ public struct Material
         _data = new Color?[size, size];
     }
 
+    public event Action<Position> DataChanged;
+
     // Resets the material to all null color values (without resizing it).
     public void Reset()
     {
@@ -41,5 +43,10 @@ public struct Material
     public void SetData(int row, int column, Color? value)
     {
         _data[row, column] = value;
+        EventHandler temp = MyEvent;
+        if (temp != null)
+        {
+            temp();
+        }
     }
 }

@@ -25,7 +25,6 @@ public class Program
             strands2.Add(new Strand(material, instructions, color, position, offset)); 
         } 
 
-
         CeruleanForge forge = new (material, strands2);
 
 
