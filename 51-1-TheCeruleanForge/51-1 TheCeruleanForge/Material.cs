@@ -4,7 +4,7 @@ namespace CeruleanForge;
 
 // Represents the current state of a material. This is a wrapper around a 2D grid
 // of colors with some utility methods to make that easier to do.
-public class Material
+public struct Material
 {
     // The underlying color data of the material.
     private Color?[,] _data;
