@@ -37,10 +37,6 @@ public class CeruleanForge(Material material, List<Strand> /* Strand[] */ strand
 
                 Thread.Sleep(10);
 
-                //renderer.Render();
-            
-                
-
             // Stop and wait briefly, to create an illusion that it takes a bit 
             // of time to weave materials. This is purely for storytelling 
             // purposes, and you can remove it at your discretion. (But note that

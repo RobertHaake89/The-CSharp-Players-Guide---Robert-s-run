@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 
 namespace CeruleanForge;
 
@@ -8,6 +9,11 @@ public class Material
 {
     // The underlying color data of the material.
     private Color?[,] _data;
+    public Color? this[int row, int column]
+    {
+        get =>  _data[row, column];
+        set     {_data[row, column] = value;}
+    }
 
     // The size (assumed to be equal in rows and columns) of the material.
     public int Size { get; }
