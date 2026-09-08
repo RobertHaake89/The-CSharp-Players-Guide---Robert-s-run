@@ -31,7 +31,7 @@ public class Renderer
         {
             for (int column = 0; column < _material.Size; column++)
             {
-                RenderConsoleLocation(row, column);
+                RenderConsoleLocation(new Position(row, column));
             }
             Console.WriteLine();
         }
@@ -39,11 +39,18 @@ public class Renderer
 
     // Renders the character at a given row and column, figuring out what the 
     // colors should be for the top (background) and bottom (foreground) halves.
-    private void RenderConsoleLocation(int row, int column)
+    public void RenderConsoleLocation(Position position)
     {
-        Color? topHalf = _material.GetData(row * 2, column);
-        Color? bottomHalf = _material.GetData(row * 2 + 1, column);
+        int consoleRow = position.Row / 2;
 
+        Color? topHalf = _material.GetData(consoleRow * 2, position.Column);
+        Color? bottomHalf = _material.GetData(consoleRow * 2 + 1, position.Column);
+
+        if (consoleRow >= Console.BufferHeight ||
+        position.Column >= Console.BufferWidth)
+        return;
+
+        Console.SetCursorPosition(position.Column, consoleRow);
         Console.Write($"{GetForeground(bottomHalf)}{GetBackground(topHalf)}▄");
     }
 

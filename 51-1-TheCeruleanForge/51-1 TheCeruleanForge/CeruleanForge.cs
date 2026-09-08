@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 
 namespace CeruleanForge;
 
@@ -21,6 +22,7 @@ public class CeruleanForge(Material material, List<Strand> /* Strand[] */ strand
         Console.CursorVisible = false;
 
         Renderer renderer = new Renderer(Material);
+        Material.DataChanged += renderer.RenderConsoleLocation;
 
         // Before we get started, make a renderer to show our progress.
         //Renderer renderer = new Renderer(Material);
@@ -35,7 +37,7 @@ public class CeruleanForge(Material material, List<Strand> /* Strand[] */ strand
 
                 Thread.Sleep(10);
 
-                renderer.Render();
+                //renderer.Render();
             
                 
 

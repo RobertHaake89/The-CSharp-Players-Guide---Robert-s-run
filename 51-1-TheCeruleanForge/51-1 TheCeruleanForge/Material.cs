@@ -4,7 +4,7 @@ namespace CeruleanForge;
 
 // Represents the current state of a material. This is a wrapper around a 2D grid
 // of colors with some utility methods to make that easier to do.
-public struct Material
+public class Material
 {
     // The underlying color data of the material.
     private Color?[,] _data;
@@ -16,10 +16,11 @@ public struct Material
     public Material(int size)
     {
         Size = size;
+        
         _data = new Color?[size, size];
     }
 
-    public event Action<Position> DataChanged;
+    public event Action<Position>? DataChanged;
 
     // Resets the material to all null color values (without resizing it).
     public void Reset()
@@ -36,6 +37,7 @@ public struct Material
         if (column < 0) return null;
         if (row >= _data.GetLength(0)) return null;
         if (column >= _data.GetLength(1)) return null;
+
         return _data[row, column];
     }
 
@@ -43,10 +45,6 @@ public struct Material
     public void SetData(int row, int column, Color? value)
     {
         _data[row, column] = value;
-        EventHandler temp = MyEvent;
-        if (temp != null)
-        {
-            temp();
-        }
+        DataChanged?.Invoke(new Position(row, column));
     }
 }
