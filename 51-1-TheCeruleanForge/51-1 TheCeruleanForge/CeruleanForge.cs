@@ -10,7 +10,7 @@ public class CeruleanForge(Material material, List<Strand> /* Strand[] */ strand
     public Material Material { get; } = material;
 
     // The set of strands doing the weaving.
-    public List<Strand> /* Strand[] */ Strands { get; } = strands;
+    public List<Strand> Strands { get; } = strands;
 
     // Runs the strands to weave the material. This runs indefinitely.
     public void Run()

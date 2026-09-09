@@ -9,7 +9,7 @@ public class Material
 {
     // The underlying color data of the material.
     private Color?[,] _data;
-    public Color? this[int row, int column/* , Color? color */]
+    public Color? this[int row, int column]
     {
         get  
         {
