@@ -9,10 +9,24 @@ public class Material
 {
     // The underlying color data of the material.
     private Color?[,] _data;
-    public Color? this[int row, int column]
+    public Color? this[int row, int column/* , Color? color */]
     {
-        get =>  _data[row, column];
-        set     {_data[row, column] = value;}
+        get  
+        {
+            if (row < 0) return null;
+            if (column < 0) return null;
+            if (row >= _data.GetLength(0)) return null;
+            if (column >= _data.GetLength(1)) return null;
+
+            return _data[row, column];
+        }
+        set
+        {
+                
+            _data[row, column] = value;
+            DataChanged?.Invoke(new Position(row, column));
+        }
+            
     }
 
     // The size (assumed to be equal in rows and columns) of the material.
@@ -32,25 +46,5 @@ public class Material
     public void Reset()
     {
         _data = new Color?[Size, Size];
-    }
-
-    // Returns the color at the current location.
-    // For convenience, if you ask for something "off the grid", this will return
-    // null instead of crashing.
-    public Color? GetData(int row, int column)
-    {
-        if (row < 0) return null;
-        if (column < 0) return null;
-        if (row >= _data.GetLength(0)) return null;
-        if (column >= _data.GetLength(1)) return null;
-
-        return _data[row, column];
-    }
-
-    // Updates the material at the given location to the given color.
-    public void SetData(int row, int column, Color? value)
-    {
-        _data[row, column] = value;
-        DataChanged?.Invoke(new Position(row, column));
     }
 }

@@ -47,7 +47,7 @@ public class Strand
         if (command == '<') Position = new Position(Position.Row, Position.Column - 1);
         if (command == '^') Position = new Position(Position.Row - 1, Position.Column);
         if (command == 'v') Position = new Position(Position.Row + 1, Position.Column);
-        if (command == '*') Material.SetData(Position.Row, Position.Column, Color);
+        if (command == '*') Material[Position.Row, Position.Column] = Color;
         if (command == ' ') { } // Do nothing.
 
         NextInstruction++;

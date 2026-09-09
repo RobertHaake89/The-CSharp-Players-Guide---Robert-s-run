@@ -43,8 +43,8 @@ public class Renderer
     {
         int consoleRow = position.Row / 2;
 
-        Color? topHalf = _material.GetData(consoleRow * 2, position.Column);
-        Color? bottomHalf = _material.GetData(consoleRow * 2 + 1, position.Column);
+        Color? topHalf = _material[consoleRow * 2, position.Column];
+        Color? bottomHalf = _material[consoleRow * 2 + 1, position.Column];
 
         if (consoleRow >= Console.BufferHeight ||
         position.Column >= Console.BufferWidth)
